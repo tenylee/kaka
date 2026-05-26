@@ -1,0 +1,247 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>益生菌注意事项</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1e293b;
+    --muted: #64748b;
+    --accent: #059669;
+    --warn: #dc2626;
+    --warn-bg: #fef2f2;
+    --info-bg: #f0fdf4;
+    --info-border: #bbf7d0;
+    --note-bg: #fffbeb;
+    --note-border: #fde68a;
+    --card-bg: #f8fafc;
+    --card-border: #e2e8f0;
+    --step-green: #059669;
+    --step-blue: #2563eb;
+    --step-amber: #d97706;
+  }
+  body {
+    margin: 0;
+    background: #f1f5f9;
+    font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--fg);
+  }
+  .container {
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+    padding: 32px 28px;
+    margin-bottom: 20px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 8px 0 0;
+  }
+  .header-icon { font-size: 40px; margin-bottom: 4px; }
+  .header h1 {
+    font-size: 24px; font-weight: 700; color: var(--accent);
+    margin: 0 0 4px; letter-spacing: 2px;
+  }
+  .header .subtitle { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* Section title */
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 17px; font-weight: 700; color: var(--fg);
+    margin-bottom: 18px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--card-border);
+  }
+  .section-title .icon { font-size: 22px; }
+
+  /* Warning items */
+  .warn-list { display: flex; flex-direction: column; gap: 12px; }
+  .warn-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--warn-bg);
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .warn-badge {
+    flex-shrink: 0; width: 36px; height: 36px;
+    border-radius: 50%; background: #fee2e2;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: var(--warn);
+  }
+  .warn-item .text { flex: 1; font-size: 14.5px; line-height: 1.65; color: #7f1d1d; }
+  .warn-item .text strong { font-weight: 700; }
+  .warn-item.highlight { border-color: #fca5a5; background: #fef2f2; }
+
+  /* Usage steps */
+  .step-list { display: flex; flex-direction: column; gap: 16px; }
+  .step-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 18px 18px;
+    border: 1px solid var(--card-border);
+    position: relative;
+  }
+  .step-num {
+    flex-shrink: 0; width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; color: #fff;
+  }
+  .step-num.morning { background: linear-gradient(135deg, #f59e0b, #f97316); }
+  .step-num.evening { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+  .step-num.extra   { background: linear-gradient(135deg, #059669, #10b981); }
+  .step-item .content { flex: 1; }
+  .step-item .content .label {
+    font-size: 15px; font-weight: 700; color: var(--fg); margin-bottom: 4px;
+  }
+  .step-item .content .desc {
+    font-size: 14px; color: var(--muted); line-height: 1.65;
+  }
+  .step-item .content .desc em {
+    font-style: normal; color: var(--accent); font-weight: 600;
+  }
+
+  /* Tips box */
+  .tips-box {
+    margin-top: 20px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .tips-box .tips-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .tips-box .tips-text { font-size: 14px; color: #78350f; line-height: 1.65; }
+  .tips-box .tips-text strong { font-weight: 700; }
+
+  /* Connector line between steps */
+  .step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 37px;
+    bottom: -17px;
+    width: 2px;
+    height: 17px;
+    background: #d1d5db;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #94a3b8;
+    padding: 8px 0 4px;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-morning { background: #fef3c7; color: #92400e; }
+  .tag-evening { background: #ede9fe; color: #5b21b6; }
+  .tag-any { background: #d1fae5; color: #065f46; }
+
+  @media print {
+    body { background: #fff; }
+    .container { max-width: 100%; margin: 0; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+  }
+</style>
+
+<div class="container">
+  <!-- Header Card -->
+  <div class="card">
+    <div class="header">
+      <div class="header-icon">🦠</div>
+      <h1>益生菌 · 服用指南</h1>
+      <p class="subtitle">Probiotics Usage Guide — 请仔细阅读以下注意事项</p>
+    </div>
+  </div>
+
+  <!-- Warnings Card -->
+  <div class="card">
+    <div class="section-title">
+      <span class="icon">⚠️</span>
+      注意事项
+    </div>
+    <div class="warn-list">
+      <div class="warn-item">
+        <div class="warn-badge">1</div>
+        <div class="text">
+          <strong>益生菌</strong>一般不建议 <strong>3 岁以下</strong>婴幼儿服用
+        </div>
+      </div>
+      <div class="warn-item">
+        <div class="warn-badge">2</div>
+        <div class="text">
+          <strong>益生元</strong>一般不建议 <strong>孕妇、哺乳期、14 岁以下</strong>人群服用
+        </div>
+      </div>
+      <div class="warn-item">
+        <div class="warn-badge">3</div>
+        <div class="text">
+          <strong>糖尿病患者</strong>请遵医嘱
+        </div>
+      </div>
+      <div class="warn-item highlight">
+        <div class="warn-badge">4</div>
+        <div class="text">
+          <strong>酒 / 茶 / 咖啡 / 中西药</strong>等，需间隔 <strong>一小时以上</strong>；避免服用 <strong>抗生素前后 2 小时内</strong>使用；开封后请 <strong>尽快服用</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage Card -->
+  <div class="card">
+    <div class="section-title">
+      <span class="icon">📋</span>
+      使用说明
+    </div>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num morning">☀️</div>
+        <div class="content">
+          <div class="label"><span class="tag tag-morning">早餐后</span>早安饮</div>
+          <div class="desc">早餐后 <em>半小时</em>服用早安饮 <strong>1 条</strong>，开袋即饮；服用后可饮用 <em>一杯温水</em></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num evening">🌙</div>
+        <div class="content">
+          <div class="label"><span class="tag tag-evening">晚餐后 / 睡前</span>晚安饮</div>
+          <div class="desc">晚餐后 <em>半小时</em>或睡前 <em>半小时</em>服用晚安饮 <strong>1 条</strong>，开袋即饮；服用后可饮用 <em>一杯温水</em></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num extra">💊</div>
+        <div class="content">
+          <div class="label"><span class="tag tag-any">任意餐后</span>益生菌胶囊</div>
+          <div class="desc">建议每天 <strong>1 颗</strong>，开瓶即食；也可加入 <em>温水（37°C 以下）</em>或牛奶中搅拌均匀后饮用</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <span class="tips-icon">💡</span>
+      <div class="tips-text">
+        <strong>小贴士：</strong>益生菌 <strong>早 / 中 / 晚餐后</strong> 均可服用，注意 <strong>餐后半小时</strong> 吃效果最佳哦！
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">— 请妥善保管，随时查阅 —</div>
+</div>
