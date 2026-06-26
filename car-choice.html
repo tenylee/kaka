@@ -1,83 +1,75 @@
 <!doctype html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>选车决策指南</title>
+<title>尊界 S800 选车决策分析</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: #ffffff;
+    background: #f8f9fa;
     color: #1a1a1a;
-    font: 16px/1.6 -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    font: 16px/1.7 -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
   }
-  main {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 20px 14px;
+  main { max-width: 700px; margin: 0 auto; padding: 24px 14px; }
+
+  .top {
+    text-align: center;
+    padding: 24px 0 20px;
   }
-  .title { text-align: center; margin-bottom: 20px; }
-  .title h1 { font-size: 26px; font-weight: 800; }
-  .title .sub { font-size: 14px; color: #888; margin-top: 4px; }
+  .top .brand { font-size: 14px; color: #888; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+  .top h1 { font-size: 28px; font-weight: 800; color: #1a1a1a; margin-top: 6px; }
+  .top .sub { font-size: 14px; color: #888; margin-top: 6px; }
+
   .dim {
     background: #fff;
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    margin-bottom: 14px;
+    border-radius: 14px;
+    margin-bottom: 16px;
     overflow: hidden;
+    border: 1px solid #e5e7eb;
   }
   .dim-h {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    font-size: 17px;
+    gap: 12px;
+    padding: 14px 18px;
+    font-size: 18px;
     font-weight: 800;
+    color: #fff;
   }
+  .dim-1 .dim-h { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+  .dim-2 .dim-h { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+  .dim-3 .dim-h { background: linear-gradient(135deg, #059669, #047857); }
+  .dim-4 .dim-h { background: linear-gradient(135deg, #d97706, #b45309); }
+  .dim-5 .dim-h { background: linear-gradient(135deg, #dc2626, #b91c1c); }
   .dim-h .num {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px; height: 30px;
+    width: 32px; height: 32px;
     border-radius: 50%;
-    color: #fff;
-    font-size: 15px;
+    background: rgba(255,255,255,0.25);
+    font-size: 16px;
     font-weight: 800;
     flex-shrink: 0;
   }
-  .dim-1 .num { background: #8b5cf6; }
-  .dim-2 .num { background: #3b82f6; }
-  .dim-3 .num { background: #10b981; }
-  .dim-4 .num { background: #f59e0b; }
-  .dim-5 .num { background: #ef4444; }
-  .dim-b { padding: 0 16px 14px; }
+  .dim-b { padding: 16px 18px; }
   .dim-b p {
     font-size: 15px;
     color: #374151;
     margin: 4px 0;
-    line-height: 1.7;
+    line-height: 1.8;
   }
-  .winner {
-    display: inline-block;
-    background: #dcfce7;
-    color: #14532d;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 14px;
-    margin-top: 6px;
-    border: 1px solid #86efac;
-  }
-  .vs { display: flex; gap: 10px; margin: 6px 0; }
+  .vs { display: flex; gap: 10px; margin: 10px 0; }
   .vs .v1, .vs .v2 {
     flex: 1;
-    padding: 10px 12px;
-    border-radius: 8px;
+    padding: 12px 14px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: 1.6;
   }
   .vs .v1 { background: #f0f9ff; color: #0c4a6e; border: 1px solid #bae6fd; }
   .vs .v2 { background: #f5f3ff; color: #4c1d95; border: 1px solid #c4b5fd; }
-  .highlight {
+  .hi {
     background: #fef08a;
     padding: 2px 7px;
     border-radius: 3px;
@@ -85,25 +77,35 @@
     color: #5c3a00;
     border: 1px solid #e6c200;
   }
-  .quote {
-    background: #fef9e7;
-    border: 3px solid #f59e0b;
-    border-radius: 12px;
-    padding: 22px 24px;
-    text-align: center;
-    margin: 20px 0 14px;
+  .conclusion {
+    display: inline-block;
+    background: #dcfce7;
+    color: #14532d;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 8px;
+    border: 1px solid #86efac;
   }
-  .quote .q-icon { font-size: 32px; margin-bottom: 8px; }
-  .quote .q-text {
+  .quote-box {
+    background: linear-gradient(135deg, #fef9e7, #fef3c7);
+    border: 3px solid #f59e0b;
+    border-radius: 14px;
+    padding: 26px 24px;
+    text-align: center;
+    margin: 24px 0 16px;
+  }
+  .quote-box .q-big {
     font-size: 22px;
     font-weight: 800;
     color: #92400e;
-    line-height: 1.4;
+    line-height: 1.5;
   }
-  .quote .q-sub {
-    font-size: 14px;
+  .quote-box .q-small {
+    font-size: 15px;
     color: #b45309;
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: 500;
   }
   .note {
@@ -113,8 +115,8 @@
     padding: 14px 16px;
     margin: 12px 0;
   }
-  .note .n-title { font-size: 15px; font-weight: 700; color: #0369a1; margin-bottom: 6px; }
-  .note p { font-size: 14px; color: #1e3a5f; line-height: 1.7; }
+  .note .nt { font-size: 15px; font-weight: 700; color: #0369a1; margin-bottom: 6px; }
+  .note p { font-size: 14px; color: #1e3a5f; }
   .note a {
     display: inline-block;
     margin-top: 6px;
@@ -122,62 +124,43 @@
     color: #0284c7;
     text-decoration: underline;
   }
-  .quote-box {
-    background: linear-gradient(135deg, #fef9e7, #fef3c7);
-    border: 3px solid #f59e0b;
-    border-radius: 14px;
-    padding: 24px 20px;
-    text-align: center;
-    margin: 20px 0 14px;
-  }
-  .quote-box .q-big {
-    font-size: 24px;
-    font-weight: 800;
-    color: #92400e;
-    line-height: 1.4;
-  }
-  .quote-box .q-small {
-    font-size: 15px;
-    color: #b45309;
-    margin-top: 10px;
-    font-weight: 500;
-  }
-  .src { text-align: center; font-size: 12px; color: #aaa; margin-top: 16px; }
+  .src { text-align: center; font-size: 12px; color: #aaa; margin-top: 18px; }
 </style>
 <main>
-  <div class="title">
-    <h1>🚗 选车决策分析</h1>
-    <div class="sub">基础版 vs 典藏版 · 五个维度</div>
+  <div class="top">
+    <div class="brand">尊界 S800</div>
+    <h1>两款车型抉择参考分析</h1>
+    <div class="sub">结合用车习惯 · 个人偏好 · 圈层场景</div>
   </div>
 
   <div class="dim dim-1">
-    <div class="dim-h"><span class="num">1</span>外观 + 内饰</div>
+    <div class="dim-h"><span class="num">一</span>外观内饰：遵从个人日常驾乘感受</div>
     <div class="dim-b">
       <div class="vs">
-        <div class="v1">🌟 基础版：透亮<br/>让人身心愉悦</div>
-        <div class="v2">典藏版：暗沉<br/>偏稳重压抑</div>
+        <div class="v1">🌟 普通顶配<br/>可选凌云白浅色内饰<br/>通透明亮，视觉舒适<br/>好心情是重要的用车价值</div>
+        <div class="v2">典藏版<br/>仅提供深色专属内饰<br/>偏厚重沉稳<br/>无法选择白色座舱</div>
       </div>
-      <span class="winner">✅ 基础版获胜 — 愉快的心情能更好地赚钱</span>
+      <span class="conclusion">✅ 从个人审美喜好看，普通顶配更贴合期待</span>
     </div>
   </div>
 
   <div class="dim dim-2">
-    <div class="dim-h"><span class="num">2</span>使用场景</div>
+    <div class="dim-h"><span class="num">二</span>用车场景：核心服务于您本人</div>
     <div class="dim-b">
-      <p>日常代步 + 偶尔长途，接客人也不会有失礼节。</p>
-      <p>大概率你段位的客人也不会在后座躺着看电影，<b>享受的还是你自己和亲近的朋友</b>。</p>
-      <p style="margin-top:6px;">→ <span class="highlight">不需要为了「撑面子」选最顶配</span></p>
+      <p>日常以市区通勤代步为主，仅偶尔跑长途、商务接待。普通顶配的硬件配置完全可以撑起商务场面，不会失礼。</p>
+      <p>日常商务接待中，大客户大多只是短途乘车沟通，很少会用到后排躺卧、影音娱乐等全套行政功能。</p>
+      <p style="margin-top:6px;">→ <span class="hi">车辆绝大部分时间都是您自己、亲友乘坐，驾乘舒适度最终还是为您服务</span></p>
     </div>
   </div>
 
   <div class="dim dim-3">
-    <div class="dim-h"><span class="num">3</span>智能驾驶发展</div>
+    <div class="dim-h"><span class="num">三</span>智能驾驶：理性看待硬件差距与技术迭代</div>
     <div class="dim-b">
-      <p>国内车企目前<b>未达到真正 L3</b>，只是「最接近 L3 的量产」。</p>
-      <p>后续硬件升级迭代，<b>势必要换车的</b>，可以再等等看更成熟的技术。</p>
-      <p>4 雷达 vs 6 雷达无非安全性相对高些，但<span class="highlight">没有到神化的程度</span>。长途高速该叫代驾还是得叫。</p>
+      <p>据门店销售确认，目前两款车型都属于国内<b>最接近合规 L3 标准</b>的量产车型，暂时还未实现全域真正的 L3 自动驾驶。</p>
+      <p>无论是 4 颗激光雷达的普通顶配，还是 6 颗雷达的典藏版，未来随着智驾技术不断更新迭代，<b>硬件终究会落后</b>。想要体验下一代高阶智驾，大概率依旧需要置换新车。</p>
+      <p>多两颗雷达只是提升了行车安全冗余，<b>并不能做到绝对安全</b>。长途高速出行，稳妥安排专职司机驾驶才是最稳妥的方式，不用过度神化硬件上的差距。</p>
       <div class="note">
-        <div class="n-title">📎 延伸阅读</div>
+        <div class="nt">📎 延伸阅读</div>
         <p>智能驾驶分级 L1~L3 速查：</p>
         <a href="https://tenylee.github.io/autonomous-driving-levels/" target="_blank">👉 点击查看智能驾驶分级速查</a>
       </div>
@@ -185,30 +168,29 @@
   </div>
 
   <div class="dim dim-4">
-    <div class="dim-h"><span class="num">4</span>消费观 / 价值观</div>
+    <div class="dim-h"><span class="num">四</span>消费价值观：两种消费逻辑的取舍</div>
     <div class="dim-b">
       <div class="vs">
-        <div class="v1">🌟 基础版<br/>满足你的喜好<br/>顶配加起来 <b>100w+</b><br/>性价比不高</div>
-        <div class="v2">典藏版<br/>最好的配置<br/>全包 <b>138w</b><br/>差价不大，配置拉满</div>
+        <div class="v1">🌟 普通顶配<br/>落地超 100 万<br/>核心优势：白色内饰<br/>底盘/智驾/商务硬件非顶配<br/>性价比偏弱</div>
+        <div class="v2">典藏版 138.8 万<br/>一步拉满全车顶级配置<br/>差价换来全方位的安全<br/>舒适、商务属性<br/>高预算圈层主流选择</div>
       </div>
-      <p style="margin-top:8px;">大众思维选典藏版更合适，<b>但你真的是大众思维的人吗？</b></p>
     </div>
   </div>
 
   <div class="dim dim-5">
-    <div class="dim-h"><span class="num">5</span>你是否在意别人的看法</div>
+    <div class="dim-h"><span class="num">五</span>圈层视角：兼顾身边人的看法</div>
     <div class="dim-b">
-      <p>会不会在意别人说：</p>
-      <p style="font-style:italic; color:#6b7280; padding-left:16px; border-left:3px solid #d1d5db; margin:8px 0; line-height:1.8;">
-        "你怎么不买个最好的，也不差那点钱"<br/>
-        "怎么花个 100w 买个基础版顶配"
+      <p>在预算没有压力的前提下，难免会有亲友、商业伙伴产生疑问：</p>
+      <p style="font-style:italic; color:#6b7280; padding-left:16px; border-left:3px solid #d1d5db; margin:10px 0; line-height:1.8;">
+        "既然不差预算，为什么没有直接选择满配典藏版？"<br/>
+        "而是入手普通顶配车型"
       </p>
-      <p style="margin-top:8px;">别人的话，<b>你真的在意吗？</b></p>
+      <p style="margin-top:8px;">需要<b>提前考虑这一层社交评价因素</b>。</p>
     </div>
   </div>
 
   <div class="quote-box">
-    <div class="q-big">💡 抛开钱不说<br/>你的喜欢，就没有性价比</div>
+    <div class="q-big">💡 如果完全抛开预算限制<br/>发自内心的偏爱，本身就无关性价比</div>
     <div class="q-small">自己喜欢，就是最好的选择</div>
   </div>
 
