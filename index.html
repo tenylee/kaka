@@ -5,17 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>卡卡 🦞</title>
 <style>
-  body { font-family: -apple-system, sans-serif; background: #1a1a2e; color: #eee;
-         display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-  .container { text-align: center; }
-  h1 { font-size: 48px; margin-bottom: 8px; }
-  p { color: #aaa; font-size: 16px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { text-align: center; max-width: 500px; width: 100%; }
+  h1 { font-size: 56px; margin-bottom: 8px; }
+  .subtitle { color: #aaa; font-size: 16px; margin-bottom: 40px; }
+  .links { display: flex; flex-direction: column; gap: 16px; }
+  .link-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: #eee;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .link-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .link-card .icon { font-size: 36px; flex-shrink: 0; }
+  .link-card .info { text-align: left; }
+  .link-card .title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .link-card .desc { font-size: 13px; color: #aaa; }
 </style>
 </head>
 <body>
 <div class="container">
   <h1>🦞 卡卡</h1>
-  <p>Kaka's Space</p>
+  <p class="subtitle">Kaka's Space</p>
+  <div class="links">
+    <a class="link-card" href="https://tenylee.github.io/autonomous-driving-levels/" target="_blank">
+      <span class="icon">🚗</span>
+      <div class="info">
+        <div class="title">智能驾驶分级速查</div>
+        <div class="desc">L1/L2/L3 分级对比 · GB/T 40429-2021 国标</div>
+      </div>
+    </a>
+  </div>
 </div>
 </body>
 </html>
